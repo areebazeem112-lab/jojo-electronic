@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Jo Jo Electronic Lahore</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Product Detail Page Specific Styles */
+        .product-detail-header {
+            background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%);
+            padding: 40px 0;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        .product-detail-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .product-detail-content {
+            padding: 60px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .product-detail-image {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-detail-info {
+            background-color: #FFFFFF;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-category-badge {
+            display: inline-block;
+            background-color: #0A1929;
+            color: #FFFFFF;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0A1929;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .product-detail-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 25px;
+        }
+        
+        .product-detail-desc {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .product-features {
+            margin-bottom: 30px;
+        }
+        
+        .product-features h4 {
+            color: #0A1929;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .product-features ul {
+            list-style: none;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .product-features li i {
+            color: #25D366;
+            font-size: 1.1rem;
+        }
+        
+        .stock-status {
+            margin-bottom: 30px;
+        }
+        
+        .in-stock {
+            color: #25D366;
+            font-weight: 600;
+        }
+        
+        .in-stock i {
+            margin-right: 5px;
+        }
+        
+        .out-of-stock {
+            color: #DC143C;
+            font-weight: 600;
+        }
+        
+        .product-detail-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-wa-large {
+            background-color: #25D366;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-wa-large:hover {
+            background-color: #20BA5A;
+            transform: translateY(-3px);
+        }
+        
+        /* Order Now Button */
+        .btn-order-now {
+            background-color: #E67E22;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-order-now:hover {
+            background-color: #D35400;
+            transform: translateY(-3px);
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .not-found i {
+            font-size: 5rem;
+            color: #CBD5E1;
+            margin-bottom: 20px;
+        }
+        
+        .not-found h2 {
+            color: #0A1929;
+            margin-bottom: 15px;
+        }
+        
+        .not-found p {
+            color: #64748B;
+            margin-bottom: 30px;
+        }
+        
+        /* Review Form Styles */
+        .review-form-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #F8FAFC;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+        }
+        
+        .review-form-container h4 {
+            color: #0A1929;
+            margin-bottom: 15px;
+        }
+        
+        .stars-input {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .stars-input i {
+            color: #CBD5E1;
+            transition: all 0.2s ease;
+        }
+        
+        .stars-input i.active {
+            color: #FBBF24;
+        }
+        
+        .review-form-container input,
+        .review-form-container textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .review-form-container textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .btn-submit-review {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .review-success {
+            display: none;
+            background: #25D366;
+            color: #FFFFFF;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        .review-card {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #F8FAFC;
+            border-radius: 12px;
+            border-left: 4px solid #3B82F6;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .review-stars {
+            color: #FBBF24;
+            font-size: 0.9rem;
+        }
+        
+        .review-name {
+            font-weight: 600;
+            color: #0A1929;
+        }
+        
+        .review-text {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+        
+        .review-date {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        
+        .no-reviews {
+            text-align: center;
+            padding: 30px;
+            color: #94A3B8;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .product-detail-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .product-detail-info {
+                padding: 25px;
+            }
+            
+            .product-detail-name {
+                font-size: 1.8rem;
+            }
+            
+            .product-detail-price {
+                font-size: 2rem;
+            }
+            
+            .product-detail-actions {
+                flex-direction: column;
+            }
+            
+            .btn-large, .btn-wa-large, .btn-order-now {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .stars-input {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">JOJO</span>
+                <span class="logo-text-light">ELECTRONIC</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-contact">
+                <a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> 03034143597
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== PRODUCT DETAIL CONTENT ==================== -->
+    <div id="productDetailContainer">
+        <!-- Content will be dynamically loaded by JavaScript -->
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jo Jo Electronic</h3>
+                    <p>Your trusted partner for premium home appliances in Lahore.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/923034143597" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p>
+                    <p><i class="fas fa-phone"></i> 0303-4143597</p>
+                    <p><i class="fas fa-envelope"></i> info@jojoelectronic.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Products Data -->
+    <script src="js/products.js"></script>
+    
+    <!-- Product Detail + Reviews Logic -->
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        
+        const container = document.getElementById('productDetailContainer');
+        const product = products.find(p => p.id === productId);
+        
+        if (product) {
+            const features = product.description.split('•').filter(f => f.trim() !== '');
+            
+            container.innerHTML = `
+                <section class="product-detail-header">
+                    <div class="container">
+                        <h1>${product.name}</h1>
+                        <div class="breadcrumb">
+                            <a href="index.html">Home</a> / 
+                            <a href="products.html">Products</a> / 
+                            <span>${product.name}</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="product-detail-content">
+                    <div class="container">
+                        <div class="product-detail-grid">
+                            <div class="product-detail-image">
+                            <img src="${product.image && product.image.startsWith('http') ? product.image : 'images/' + product.image}" alt="${product.name}" onerror="this.src='images/no-image.jpg'">
+                            </div>
+                            <div class="product-detail-info">
+                                <span class="product-category-badge">${product.category}</span>
+                                <h2 class="product-detail-name">${product.name}</h2>
+                                <p class="product-detail-price">Rs. ${product.price.toLocaleString()}</p>
+                                
+                                <!-- Star Rating Mini -->
+                                <div class="product-rating-mini" id="productRatingMini"></div>
+                                
+                                <p class="product-detail-desc">${product.description}</p>
+                                
+                                <div class="product-features">
+                                    <h4><i class="fas fa-check-circle" style="color: #25D366;"></i> Key Features</h4>
+                                    <ul>
+                                        ${features.map(feature => `
+                                            <li><i class="fas fa-check"></i> ${feature.trim()}</li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div class="stock-status">
+                                    ${product.inStock ? 
+                                        '<span class="in-stock"><i class="fas fa-check-circle"></i> In Stock</span>' : 
+                                        '<span class="out-of-stock"><i class="fas fa-times-circle"></i> Out of Stock</span>'
+                                    }
+                                </div>
+                                
+                                <div class="product-detail-actions">
+                                    <a href="products.html" class="btn btn-primary btn-large">
+                                        <i class="fas fa-arrow-left"></i> Back
+                                    </a>
+                                    <button onclick="handleOrder(product)" class="btn-order-now">
+                                        <i class="fas fa-shopping-cart"></i> Order Now
+                                    </button>
+                                    <a href="https://wa.me/923034143597?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}%20-%20Rs.%20${product.price}" 
+                                       class="btn-wa-large" target="_blank">
+                                        <i class="fab fa-whatsapp"></i> WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ==================== REVIEWS SECTION ==================== -->
+                        <div class="reviews-section" style="margin-top: 40px; padding: 30px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <h3 style="color: #0A1929; margin-bottom: 20px; font-size: 1.5rem;"><i class="fas fa-star" style="color: #FBBF24;"></i> Customer Reviews</h3>
+                            
+                            <!-- Average Rating -->
+                            <div class="average-rating" id="averageRating" style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding: 20px; background: #F8FAFC; border-radius: 12px;"></div>
+                            
+                            <!-- Review Form -->
+                            <div class="review-form-container">
+                                <h4>✍️ Write a Review</h4>
+                                <div class="stars-input" id="starsInput">
+                                    <i class="fas fa-star" data-star="1"></i>
+                                    <i class="fas fa-star" data-star="2"></i>
+                                    <i class="fas fa-star" data-star="3"></i>
+                                    <i class="fas fa-star" data-star="4"></i>
+                                    <i class="fas fa-star" data-star="5"></i>
+                                </div>
+                                <input type="text" id="reviewName" placeholder="Your Name *" required>
+                                <textarea id="reviewText" placeholder="Share your experience with this product..." required></textarea>
+                                <button class="btn-submit-review" onclick="submitReview()">
+                                    <i class="fas fa-paper-plane"></i> Submit Review
+                                </button>
+                                <div class="review-success" id="reviewSuccess">✅ Review submitted successfully!</div>
+                            </div>
+                            
+                            <!-- Reviews List -->
+                            <div id="reviewsList"></div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            // Load reviews after content is rendered
+            setTimeout(() => {
+                loadReviews();
+            }, 100);
+            
+        } else {
+            container.innerHTML = `
+                <section class="product-detail-content">
+                    <div class="container">
+                        <div class="not-found">
+                            <i class="fas fa-box-open"></i>
+                            <h2>Product Not Found</h2>
+                            <p>The product you're looking for doesn't exist or has been removed.</p>
+                            <a href="products.html" class="btn btn-primary">
+                                <i class="fas fa-arrow-left"></i> Browse All Products
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+        
+        // ==================== SMART ORDER LOGIC ====================
+        function handleOrder(product) {
+            const heavyCategories = ['Air Conditioner', 'Washing Machine', 'Deep Freezer', 'Home Appliance'];
+            const isHeavy = heavyCategories.includes(product.category);
+            
+            if (isHeavy) {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                    background: rgba(0,0,0,0.85); z-index: 9999;
+                    display: flex; align-items: center; justify-content: center;
+                `;
+                modal.innerHTML = `
+                    <div style="background: #FFF; padding: 40px; border-radius: 16px; text-align: center; max-width: 500px; margin: 20px;">
+                        <i class="fas fa-box-open" style="font-size: 4rem; color: #3B82F6; margin-bottom: 20px;"></i>
+                        <h2 style="color: #0A1929; margin-bottom: 15px;">⚠️ Heavy/Expensive Item</h2>
+                        <p style="color: #475569; margin-bottom: 20px; font-size: 1.1rem;">
+                            This is a <strong>heavy home appliance</strong>. For <strong>safe delivery</strong> and quality assurance, please <strong>visit our shop</strong> for inspection.
+                        </p>
+                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                            <a href="https://wa.me/923034143597?text=I%20want%20to%20schedule%20a%20visit%20for%20${encodeURIComponent(product.name)}" 
+                               target="_blank" 
+                               style="background: #25D366; color: #FFF; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                                <i class="fab fa-whatsapp"></i> Schedule Visit
+                            </a>
+                            <button onclick="window.open('https://maps.google.com?q=Khara+Chowk+Rohi+Nala+Raiwind+Lahore')" 
+                                    style="background: #3B82F6; color: #FFF; padding: 12px 25px; border-radius: 50px; border: none; cursor: pointer; font-weight: 600;">
+                                <i class="fas fa-map-marker-alt"></i> Get Directions
+                            </button>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                    style="background: #64748B; color: #FFF; padding: 12px 25px; border-radius: 50px; border: none; cursor: pointer; font-weight: 600;">
+                                <i class="fas fa-times"></i> Close
+                            </button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            } else {
+                window.open(`https://wa.me/923034143597?text=Order%20Request:%20${encodeURIComponent(product.name)}%20-%20Rs.%20${product.price}%0A%0AMy%20Details:%0AName:%20______%0AAddress:%20______%0APhone:%20______`, '_blank');
+            }
+        }
+        
+        // ==================== REVIEWS SYSTEM ====================
+        let selectedRating = 0;
+        const currentProductId = productId;
+        
+        // Star click handler
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('#starsInput') && e.target.classList.contains('fa-star')) {
+                const star = parseInt(e.target.dataset.star);
+                selectedRating = star;
+                updateStarDisplay();
+            }
+        });
+        
+        function updateStarDisplay() {
+            const allStars = document.querySelectorAll('#starsInput i');
+            if (allStars.length === 0) return;
+            allStars.forEach((star, index) => {
+                star.classList.toggle('active', index < selectedRating);
+            });
+        }
+        
+        // Submit review
+        function submitReview() {
+            const nameInput = document.getElementById('reviewName');
+            const textInput = document.getElementById('reviewText');
+            
+            if (!nameInput || !textInput) return;
+            
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if (!name) { alert('Please enter your name.'); return; }
+            if (selectedRating === 0) { alert('Please select a star rating.'); return; }
+            if (!text) { alert('Please write a review.'); return; }
+            
+            const review = {
+                productId: currentProductId,
+                name: name,
+                rating: selectedRating,
+                text: text,
+                date: new Date().toLocaleDateString('en-PK', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                })
+            };
+            
+            const allReviews = JSON.parse(localStorage.getItem('jojo-reviews') || '{}');
+            if (!allReviews[currentProductId]) {
+                allReviews[currentProductId] = [];
+            }
+            allReviews[currentProductId].unshift(review);
+            localStorage.setItem('jojo-reviews', JSON.stringify(allReviews));
+            
+            nameInput.value = '';
+            textInput.value = '';
+            selectedRating = 0;
+            updateStarDisplay();
+            
+            const successMsg = document.getElementById('reviewSuccess');
+            if (successMsg) {
+                successMsg.style.display = 'block';
+                setTimeout(() => { successMsg.style.display = 'none'; }, 3000);
+            }
+            
+            loadReviews();
+        }
+        
+        // Load and display reviews
+        function loadReviews() {
+            const allReviews = JSON.parse(localStorage.getItem('jojo-reviews') || '{}');
+            const productReviews = allReviews[currentProductId] || [];
+            
+            const reviewsList = document.getElementById('reviewsList');
+            const averageRatingDiv = document.getElementById('averageRating');
+            const productRatingMini = document.getElementById('productRatingMini');
+            
+            if (!reviewsList || !averageRatingDiv) return;
+            
+            let avgRating = 0;
+            if (productReviews.length > 0) {
+                const total = productReviews.reduce((sum, r) => sum + r.rating, 0);
+                avgRating = (total / productReviews.length).toFixed(1);
+            }
+            
+            averageRatingDiv.innerHTML = `
+                <div style="font-size: 3rem; font-weight: 700; color: #0A1929;">${avgRating > 0 ? avgRating : '0.0'}</div>
+                <div>
+                    <div style="color: #FBBF24; font-size: 1.4rem;">${getStarsHTML(Math.round(avgRating))}</div>
+                    <div style="color: #64748B; font-size: 0.95rem;">${productReviews.length} review${productReviews.length !== 1 ? 's' : ''}</div>
+                </div>
+            `;
+            
+            if (productRatingMini) {
+                productRatingMini.innerHTML = productReviews.length > 0 ? `
+                    <span style="color: #FBBF24; font-size: 0.9rem;">${getStarsHTML(Math.round(avgRating))}</span>
+                    <span style="color: #64748B; font-size: 0.8rem;">(${productReviews.length})</span>
+                ` : '';
+            }
+            
+            reviewsList.innerHTML = productReviews.length === 0 ? `
+                <div class="no-reviews">
+                    <i class="fas fa-comment-dots" style="font-size: 3rem; color: #CBD5E1; margin-bottom: 10px;"></i>
+                    <p>No reviews yet. Be the first to review this product!</p>
+                </div>
+            ` : productReviews.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">${review.name}</span>
+                        <span class="review-stars">${getStarsHTML(review.rating)}</span>
+                    </div>
+                    <p class="review-text">${review.text}</p>
+                    <p class="review-date">📅 ${review.date}</p>
+                </div>
+            `).join('');
+        }
+        
+        function getStarsHTML(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<i class="fas fa-star" style="color: ${i <= rating ? '#FBBF24' : '#CBD5E1'};"></i>`;
+            }
+            return stars;
+        }
+    </script>
+    
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
+        
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+                body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+        }
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+    </script>
+    <script>
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 150;
+        if (elementTop < windowHeight - revealPoint) {
+            element.classList.add('active');
+        }
+    });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scroll to Top Script -->
+    <script>
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+    <!-- Floating WhatsApp Bubble -->
+<a href="https://wa.me/923034143597?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20a%20product." 
+   target="_blank" 
+   class="whatsapp-float"
+   title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<style>
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: #FFFFFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    z-index: 998;
+    animation: pulse-wa 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+}
+
+@keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    50% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+}
+
+@media screen and (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 25px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+    }
+}
+</style>
+</body>
+</html>

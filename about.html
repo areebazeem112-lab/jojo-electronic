@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Jo Jo Electronic Lahore</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* About Page Specific Styles */
+        .about-header {
+            background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        .about-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .about-content {
+            padding: 60px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            color: #0A1929;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h2 i {
+            color: #3B82F6;
+            margin-right: 10px;
+        }
+        
+        .about-text p {
+            color: #475569;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-highlight {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .about-highlight h3 {
+            color: #0A1929;
+            margin-bottom: 10px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #3B82F6;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            color: #0A1929;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">JOJO</span>
+                <span class="logo-text-light">ELECTRONIC</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-contact">
+                <a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> 03034143597
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== ABOUT HEADER ==================== -->
+    <section class="about-header">
+        <div class="container">
+            <h1>About <span class="highlight">Jo Jo Electronic</span></h1>
+            <p>Your Trusted Partner for Premium Home Appliances in Lahore</p>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT CONTENT ==================== -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2><i class="fas fa-store"></i> Our Story</h2>
+                    <p>Founded by <strong>Mr. Muhammad Ismail</strong>, Jo Jo Electronic has been serving the Raiwind, Lahore community with premium home appliances for over a decade. What started as a small electronics repair shop has grown into a trusted destination for quality air conditioners, washing machines, fans, and modern kitchen appliances.</p>
+                    <p>Our mission is simple: <strong>Quality Products, Honest Prices, Exceptional Service</strong>. We believe in building lasting relationships with our customers by offering genuine products from trusted brands like EcoStar, GFC, and Sonex.</p>
+                    <p>Every product in our store is handpicked to ensure it meets our high standards of quality and reliability. When you shop at Jo Jo Electronic, you're not just buying an appliance — you're investing in peace of mind.</p>
+                </div>
+                <div class="about-highlight">
+                    <!-- Owner Photo -->
+                    <img src="images/owner-ismail.jpg" alt="Mr. Muhammad Ismail" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #3B82F6; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3>Mr. Muhammad Ismail</h3>
+                    <p style="color: #64748B; margin-bottom: 20px;">Founder & Owner</p>
+                    <p style="font-style: italic; color: #475569;">"For me, this is not just a business. It's about helping families in our community make their homes more comfortable. Every customer who walks through our doors is like family."</p>
+                    
+                    <!-- Divider -->
+                    <hr style="width: 50px; margin: 25px auto; border: 2px solid #3B82F6; border-radius: 2px;">
+                    
+                    <!-- Son Photo -->
+                    <img src="images/owner-son.jpg" alt="Mr. Agaz Ahmad" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #3B82F6; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h4 style="color: #0A1929; font-size: 1.2rem;">[Mr. Agaz Ahmad]</h4>
+                    <p style="color: #64748B;">Co-Manager, Jo Jo Electronic</p>
+                    <p style="font-style: italic; color: #475569;">"Continuing our family tradition of quality and trust."</p>
+                    
+                    <!-- Stars -->
+                    <div style="margin-top: 20px;">
+                        <i class="fas fa-star" style="color: #FBBF24;"></i>
+                        <i class="fas fa-star" style="color: #FBBF24;"></i>
+                        <i class="fas fa-star" style="color: #FBBF24;"></i>
+                        <i class="fas fa-star" style="color: #FBBF24;"></i>
+                        <i class="fas fa-star" style="color: #FBBF24;"></i>
+                        <p style="margin-top: 5px; color: #64748B;">Trusted by 1000+ families</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-medal"></i>
+                    <h4>Premium Brands</h4>
+                    <p>Authorized dealer of EcoStar, GFC, Sonex, and other leading brands</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tags"></i>
+                    <h4>Best Prices</h4>
+                    <p>Competitive pricing with regular special offers and discounts</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Expert Support</h4>
+                    <p>Free consultation and after-sales guidance for all products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jo Jo Electronic</h3>
+                    <p>Your trusted partner for premium home appliances in Lahore.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/923034143597" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p>
+                    <p><i class="fas fa-phone"></i> 0303-4143597</p>
+                    <p><i class="fas fa-envelope"></i> mismail4143597@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Products Data -->
+    <script src="js/products.js"></script>
+    
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
+        
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+                body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+        }
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (navMenu && navToggle && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    </script>
+    <script>
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 150;
+        if (elementTop < windowHeight - revealPoint) {
+            element.classList.add('active');
+        }
+    });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scroll to Top Script -->
+    <script>
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        if (scrollBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+    <!-- Floating WhatsApp Bubble -->
+<a href="https://wa.me/923034143597?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20a%20product." 
+   target="_blank" 
+   class="whatsapp-float"
+   title="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<style>
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: #FFFFFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    z-index: 998;
+    animation: pulse-wa 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+}
+
+@keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    50% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+}
+
+@media screen and (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 25px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+    }
+}
+</style>
+</body>
+</html>
