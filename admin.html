@@ -7,458 +7,108 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .admin-header {
-            background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%);
-            padding: 30px 0;
-            text-align: center;
-            color: #FFFFFF;
-        }
+        .admin-header { background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%); padding: 30px 0; text-align: center; color: #FFFFFF; }
         .admin-header h1 { font-size: 2rem; }
-        .admin-table {
-            width: 100%;
-            background: #FFFFFF;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        .admin-table th {
-            background: #0A1929;
-            color: #FFFFFF;
-            padding: 12px;
-            font-size: 0.85rem;
-        }
-        .admin-table td {
-            padding: 8px;
-            border-bottom: 1px solid #E2E8F0;
-            font-size: 0.85rem;
-        }
-        .admin-table input, .admin-table select {
-            width: 100%;
-            padding: 6px;
-            border: 1px solid #E2E8F0;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-        .btn-save {
-            background: #25D366;
-            color: #FFF;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .btn-delete {
-            background: #DC143C;
-            color: #FFF;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .btn-add {
-            background: #3B82F6;
-            color: #FFF;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
+        .admin-table { width: 100%; background: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .admin-table th { background: #0A1929; color: #FFFFFF; padding: 12px; font-size: 0.85rem; }
+        .admin-table td { padding: 8px; border-bottom: 1px solid #E2E8F0; font-size: 0.85rem; }
+        .btn-save { background: #25D366; color: #FFF; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .btn-add { background: #3B82F6; color: #FFF; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; margin-bottom: 20px; display: inline-block; }
         .btn-add:hover { background: #2563EB; }
-        .btn-save:hover { background: #20BA5A; }
-        .btn-delete:hover { background: #B22222; }
-        .success-msg {
-            background: #25D366;
-            color: #FFF;
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
-            display: none;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .add-form {
-            background: #FFFFFF;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: none;
-            margin-bottom: 30px;
-        }
+        .btn-sheet { background: #F59E0B; color: #0A1929; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; display: inline-block; text-decoration: none; box-shadow: 0 4px 15px rgba(245,158,11,0.3); }
+        .btn-sheet:hover { background: #E67E22; }
+        .success-msg { background: #25D366; color: #FFF; padding: 12px; text-align: center; border-radius: 8px; display: none; margin-bottom: 20px; font-weight: 600; }
+        .add-form { background: #FFFFFF; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: none; margin-bottom: 30px; }
         .add-form h3 { margin-bottom: 20px; color: #0A1929; }
-        .add-form input, .add-form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            border: 1px solid #E2E8F0;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-        .add-form .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .product-count {
-            text-align: center;
-            color: #64748B;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .upload-status {
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        .image-preview {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            display: none;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            border: 2px solid #E2E8F0;
-        }
-        @media screen and (max-width: 768px) {
-            .admin-table { font-size: 0.7rem; }
-            .admin-table th, .admin-table td { padding: 5px; }
-            .add-form .form-row { grid-template-columns: 1fr; }
-        }
+        .add-form input { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.9rem; }
+        .add-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .product-count { text-align: center; color: #64748B; margin-bottom: 20px; font-size: 0.95rem; }
+        .upload-status { font-size: 0.85rem; margin-bottom: 10px; font-weight: 500; }
+        .image-preview { width: 100px; height: 100px; object-fit: contain; display: none; margin-bottom: 12px; border-radius: 8px; border: 2px solid #E2E8F0; }
+        .instruction-box { background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center; }
+        .instruction-box h3 { color: #92400E; margin-bottom: 10px; }
+        .instruction-box p { color: #78350F; font-size: 0.9rem; line-height: 1.6; }
+        @media screen and (max-width: 768px) { .admin-table { font-size: 0.7rem; } .admin-table th, .admin-table td { padding: 5px; } .add-form .form-row { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-    <!-- Password Protection -->
     <script>
         if (!sessionStorage.getItem('admin-auth')) {
             const password = prompt("🔐 Enter Admin Password:");
-            if (password !== "jojo2026") {
-                alert("❌ Access Denied!");
-                window.location.href = "index.html";
-            } else {
-                sessionStorage.setItem('admin-auth', 'true');
-            }
+            if (password !== "jojo2026") { alert("❌ Access Denied!"); window.location.href = "index.html"; }
+            else { sessionStorage.setItem('admin-auth', 'true'); }
         }
     </script>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">JOJO</span>
-                <span class="logo-text-light">ELECTRONIC</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+    <nav class="navbar"><div class="nav-container"><div class="nav-logo"><span class="logo-text">JOJO</span><span class="logo-text-light">ELECTRONIC</span></div><ul class="nav-menu"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="products.html" class="nav-link">Products</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul></div></nav>
+    
+    <section class="admin-header"><h1>🛠️ Admin Panel</h1><p>View Products | Add New with Photo | Edit Prices in Google Sheets</p></section>
+    
+    <section style="padding: 40px 0; background: #F8FAFC;"><div class="container">
+        <div class="success-msg" id="successMsg"></div>
+        
+        <!-- Instruction Box -->
+        <div class="instruction-box">
+            <h3>📋 How to Manage Products</h3>
+            <p><strong>✏️ Edit Prices/Names/Stock:</strong> Click the orange button below → Edit directly in Google Sheets → Website auto-updates!</p>
+            <p><strong>📸 Add New Product with Photo:</strong> Click the blue "Add New Product" button below → Fill form → Upload photo → Save!</p>
+            <p><strong>🗑️ Delete Product:</strong> Open Google Sheets → Delete the row → Done!</p>
         </div>
-    </nav>
-
-    <!-- Header -->
-    <section class="admin-header">
-        <h1>🛠️ Admin Panel</h1>
-        <p>Manage Products - Add, Edit, Delete</p>
-    </section>
-
-    <!-- Main Content -->
-    <section style="padding: 40px 0; background: #F8FAFC;">
-        <div class="container">
-            <div class="success-msg" id="successMsg"></div>
-            
-            <!-- Product Count -->
-            <p class="product-count" id="productCount"></p>
-            
-            <!-- Add New Product Button -->
-            <button class="btn-add" onclick="toggleForm()">
-                <i class="fas fa-plus-circle"></i> Add New Product
-            </button>
-            
-            <!-- Add New Product Form -->
-            <div class="add-form" id="addForm">
-                <h3>➕ Add New Product</h3>
-                <div class="form-row">
-                    <input type="text" id="newName" placeholder="Product Name *" required>
-                    <input type="text" id="newCategory" placeholder="Category *" required>
-                </div>
-                <div class="form-row">
-                    <input type="number" id="newPrice" placeholder="Price (Rs.) *" required>
-                    <div>
-                        <input type="file" id="newImageFile" accept="image/*" onchange="handleImageUpload()" style="margin-bottom: 5px;">
-                        <div class="upload-status" id="uploadStatus"></div>
-                        <input type="hidden" id="newImage" value="">
-                        <img class="image-preview" id="imagePreview" alt="Preview">
-                    </div>
-                </div>
-                <input type="text" id="newDesc" placeholder="Description (features)">
-                <div style="display: flex; gap: 10px;">
-                    <button class="btn-save" onclick="addProduct()" style="flex: 1; padding: 12px;">
-                        <i class="fas fa-save"></i> Save Product
-                    </button>
-                    <button class="btn-delete" onclick="toggleForm()" style="flex: 1; padding: 12px; background: #64748B;">
-                        <i class="fas fa-times"></i> Cancel
-                    </button>
+        
+        <!-- Open Google Sheets Button -->
+        <div style="text-align:center; margin-bottom:25px;">
+            <a href="https://docs.google.com/spreadsheets/d/1TVlrABDmfQ55IjAWeVuPku52WFdvhTBZZY4sW-YO9Cg/edit" target="_blank" class="btn-sheet">
+                📊 Open Google Sheets (Edit Prices, Delete, Add without Photo)
+            </a>
+        </div>
+        
+        <p class="product-count" id="productCount"></p>
+        
+        <button class="btn-add" onclick="toggleForm()"><i class="fas fa-plus-circle"></i> Add New Product (with Photo Upload)</button>
+        
+        <div class="add-form" id="addForm">
+            <h3>➕ Add New Product (Saves to Google Sheets)</h3>
+            <div class="form-row">
+                <input type="text" id="newName" placeholder="Product Name *" required>
+                <input type="text" id="newCategory" placeholder="Category *" required>
+            </div>
+            <div class="form-row">
+                <input type="number" id="newPrice" placeholder="Price (Rs.) *" required>
+                <div>
+                    <input type="file" id="newImageFile" accept="image/*" onchange="handleImageUpload()">
+                    <div class="upload-status" id="uploadStatus"></div>
+                    <input type="hidden" id="newImage" value="">
+                    <img class="image-preview" id="imagePreview" alt="Preview">
                 </div>
             </div>
-            
-            <!-- Products Table -->
-            <table class="admin-table" id="adminTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Price (Rs.)</th>
-                        <th>In Stock</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="adminBody"></tbody>
-            </table>
+            <input type="text" id="newDesc" placeholder="Description (features)">
+            <div style="display:flex;gap:10px;">
+                <button class="btn-save" onclick="addProduct()" style="flex:1;padding:12px;background:#25D366;color:#FFF;border:none;border-radius:6px;cursor:pointer;font-size:1rem;font-weight:600;"><i class="fas fa-save"></i> Save to Google Sheets</button>
+                <button onclick="toggleForm()" style="flex:1;padding:12px;background:#64748B;color:#FFF;border:none;border-radius:6px;cursor:pointer;font-size:1rem;"><i class="fas fa-times"></i> Cancel</button>
+            </div>
         </div>
-    </section>
-
+        
+        <table class="admin-table" id="adminTable">
+            <thead><tr><th>ID</th><th>Product Name</th><th>Category</th><th>Price (Rs.)</th><th>Stock</th></tr></thead>
+            <tbody id="adminBody"></tbody>
+        </table>
+    </div></section>
+    
     <script src="js/products.js"></script>
-    
-    <!-- Cloudinary Image Upload -->
     <script>
-        // Cloudinary Configuration
-        const CLOUD_NAME = "doirkhmlv";
-        const UPLOAD_PRESET = "jojo-electronics";
-        
-        // Handle image upload to Cloudinary
-        function handleImageUpload() {
-            const file = document.getElementById('newImageFile').files[0];
-            if (!file) return;
-            
-            // Show preview
-            const preview = document.getElementById('imagePreview');
-            preview.src = URL.createObjectURL(file);
-            preview.style.display = 'block';
-            
-            // Show uploading status
-            const statusEl = document.getElementById('uploadStatus');
-            statusEl.textContent = '⏳ Uploading image...';
-            statusEl.style.color = '#3B82F6';
-            
-            // Upload to Cloudinary
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', UPLOAD_PRESET);
-            
-            fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.secure_url) {
-                    document.getElementById('newImage').value = data.secure_url;
-                    statusEl.textContent = '✅ Image uploaded successfully!';
-                    statusEl.style.color = '#25D366';
-                } else {
-                    statusEl.textContent = '❌ Upload failed. Try again.';
-                    statusEl.style.color = '#DC143C';
-                }
-            })
-            .catch(error => {
-                statusEl.textContent = '❌ Upload failed. Try again.';
-                statusEl.style.color = '#DC143C';
-            });
-        }
+        const CLOUD_NAME = "doirkhmlv"; const UPLOAD_PRESET = "jojo-electronics";
+        function handleImageUpload(){const f=document.getElementById('newImageFile').files[0];if(!f)return;document.getElementById('imagePreview').src=URL.createObjectURL(f);document.getElementById('imagePreview').style.display='block';const s=document.getElementById('uploadStatus');s.textContent='⏳ Uploading...';s.style.color='#3B82F6';const d=new FormData();d.append('file',f);d.append('upload_preset',UPLOAD_PRESET);fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,{method:'POST',body:d}).then(r=>r.json()).then(data=>{if(data.secure_url){document.getElementById('newImage').value=data.secure_url;s.textContent='✅ Uploaded!';s.style.color='#25D366'}else{s.textContent='❌ Failed';s.style.color='#DC143C'}}).catch(()=>{s.textContent='❌ Failed';s.style.color='#DC143C'})}
     </script>
-    
-    <!-- Admin Panel Logic -->
     <script>
-        const adminBody = document.getElementById('adminBody');
-        const successMsg = document.getElementById('successMsg');
-        const productCount = document.getElementById('productCount');
-        
-        // Show success message
-        function showMessage(text) {
-            successMsg.textContent = text;
-            successMsg.style.display = 'block';
-            setTimeout(() => { successMsg.style.display = 'none'; }, 2500);
-        }
-        
-        // Toggle add form
-        function toggleForm() {
-            const form = document.getElementById('addForm');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-            // Reset upload fields
-            document.getElementById('uploadStatus').textContent = '';
-            document.getElementById('imagePreview').style.display = 'none';
-            document.getElementById('newImage').value = '';
-            document.getElementById('newImageFile').value = '';
-        }
-        
-        // Add new product
-        function addProduct() {
-            const name = document.getElementById('newName').value.trim();
-            const category = document.getElementById('newCategory').value.trim();
-            const price = parseInt(document.getElementById('newPrice').value);
-            const image = document.getElementById('newImage').value.trim();
-            const desc = document.getElementById('newDesc').value.trim();
-            
-            if (!name || !category || !price) {
-                alert('❌ Please fill all required fields (*)');
-                return;
-            }
-            
-            if (!image) {
-                alert('❌ Please upload an image first.');
-                return;
-            }
-            
-            const newProduct = {
-                id: products.length + 1,
-                name: name,
-                category: category,
-                price: price,
-                image: image,
-                description: desc || 'New product',
-                inStock: true
-            };
-            
-            products.push(newProduct);
-            saveProducts();
-            
-            // Clear form
-            document.getElementById('newName').value = '';
-            document.getElementById('newCategory').value = '';
-            document.getElementById('newPrice').value = '';
-            document.getElementById('newImage').value = '';
-            document.getElementById('newDesc').value = '';
-            document.getElementById('newImageFile').value = '';
-            document.getElementById('uploadStatus').textContent = '';
-            document.getElementById('imagePreview').style.display = 'none';
-            
-            toggleForm();
-            renderAdminTable();
-            showMessage('✅ New product added successfully!');
-        }
-        
-        // Save product edits
-        function saveProduct(index) {
-            const newPrice = parseInt(document.getElementById(`price-${index}`).value);
-            const newStock = document.getElementById(`stock-${index}`).value === 'true';
-            
-            products[index].price = newPrice;
-            products[index].inStock = newStock;
-            
-            saveProducts();
-            showMessage('✅ Changes saved successfully!');
-        }
-        
-        // Delete product
-        function deleteProduct(index) {
-            if (confirm(`⚠️ Delete "${products[index].name}"? This cannot be undone.`)) {
-                products.splice(index, 1);
-                saveProducts();
-                renderAdminTable();
-                showMessage('🗑️ Product deleted successfully!');
-            }
-        }
-        
-        // Render admin table
-        function renderAdminTable() {
-            adminBody.innerHTML = '';
-            productCount.textContent = `📦 Total Products: ${products.length}`;
-            
-            products.forEach((product, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${product.id}</td>
-                    <td><strong>${product.name}</strong></td>
-                    <td>${product.category}</td>
-                    <td><input type="number" id="price-${index}" value="${product.price}" style="width: 80px;"></td>
-                    <td>
-                        <select id="stock-${index}">
-                            <option value="true" ${product.inStock ? 'selected' : ''}>✅ In Stock</option>
-                            <option value="false" ${!product.inStock ? 'selected' : ''}>❌ Out</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="btn-save" onclick="saveProduct(${index})">💾 Save</button>
-                        <button class="btn-delete" onclick="deleteProduct(${index})">🗑️</button>
-                    </td>
-                `;
-                adminBody.appendChild(row);
-            });
-        }
-        
-        // Initial render
-        renderAdminTable();
+        const API_URL = "https://script.google.com/macros/s/AKfycbzeGfVTLHdI8TE9qHAKLdrt1_Yw4OfK5D9VMuWA-lLIGuyTH2NK3pioSHkcTfJGBWAW-g/exec";
+        const adminBody=document.getElementById('adminBody'),successMsg=document.getElementById('successMsg'),productCount=document.getElementById('productCount');
+        function showMessage(t){successMsg.textContent=t;successMsg.style.display='block';setTimeout(()=>{successMsg.style.display='none'},2500)}
+        function toggleForm(){const f=document.getElementById('addForm');f.style.display=f.style.display==='block'?'none':'block';document.getElementById('uploadStatus').textContent='';document.getElementById('imagePreview').style.display='none';document.getElementById('newImage').value='';document.getElementById('newImageFile').value=''}
+        async function addProduct(){const n=document.getElementById('newName').value.trim(),c=document.getElementById('newCategory').value.trim(),p=parseInt(document.getElementById('newPrice').value),i=document.getElementById('newImage').value.trim(),d=document.getElementById('newDesc').value.trim();if(!n||!c||!p){alert('❌ Fill all fields');return}if(!i){alert('❌ Upload an image first');return}try{await fetch(API_URL,{method:'POST',body:JSON.stringify({name:n,category:c,price:p,description:d||'New product',image:i,inStock:true})});showMessage('✅ Added! Refreshing...');document.getElementById('newName').value='';document.getElementById('newCategory').value='';document.getElementById('newPrice').value='';document.getElementById('newImage').value='';document.getElementById('newDesc').value='';document.getElementById('newImageFile').value='';toggleForm();setTimeout(()=>location.reload(),2000)}catch(e){showMessage('❌ Failed')}}
+        async function loadAdminProducts(){try{const r=await fetch(API_URL);products=await r.json();renderAdminTable()}catch(e){productCount.textContent='⚠️ Could not load.'}}
+        function renderAdminTable(){adminBody.innerHTML='';productCount.textContent=`📦 Total: ${products.length} products`;products.forEach((p,i)=>{const row=document.createElement('tr');row.innerHTML=`<td>${i+1}</td><td><strong>${p.name}</strong></td><td>${p.category}</td><td>Rs. ${p.price.toLocaleString?p.price.toLocaleString():p.price}</td><td>${p.inStock?'✅ In Stock':'❌ Out'}</td>`;adminBody.appendChild(row)})}
+        loadAdminProducts();
     </script>
-
-    <!-- Reveal on Scroll -->
-    <script>
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const revealPoint = 150;
-                if (elementTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-    </script>
-
-    <!-- Floating WhatsApp Bubble -->
-    <a href="https://wa.me/923034143597?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20a%20product." 
-       target="_blank" 
-       class="whatsapp-float"
-       title="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <style>
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: #FFFFFF;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-            z-index: 998;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
-        }
-
-        @media screen and (max-width: 768px) {
-            .whatsapp-float {
-                bottom: 25px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <a href="https://wa.me/923034143597" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <style>.whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;color:#FFF;border-radius:50%;font-size:2rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:998}@media screen and (max-width:768px){.whatsapp-float{bottom:25px;right:20px;width:55px;height:55px;font-size:1.8rem}}</style>
 </body>
 </html>
