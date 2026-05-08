@@ -2,290 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="/jojo-electronic/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products | Jo Jo Electronic Lahore</title>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Products Page Specific CSS -->
     <style>
-        /* Products Page Header */
-        .products-page-header {
-            background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%);
-            padding: 60px 0;
-            text-align: center;
-            color: #FFFFFF;
-        }
-        
-        .products-page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        
-        .products-page-header p {
-            font-size: 1.2rem;
-            color: #CBD5E1;
-        }
-        
-        /* Search and Filter Bar */
-        .filter-bar {
-            background-color: #FFFFFF;
-            padding: 30px 0;
-            border-bottom: 1px solid #E2E8F0;
-            position: sticky;
-            top: 80px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .filter-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .search-wrapper {
-            flex: 2;
-            min-width: 280px;
-            position: relative;
-        }
-        
-        .search-wrapper i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94A3B8;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 14px 20px 14px 45px;
-            border: 2px solid #E2E8F0;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #3B82F6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        .filter-controls {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-select {
-            padding: 12px 20px;
-            border: 2px solid #E2E8F0;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            background-color: #FFFFFF;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-select:focus {
-            outline: none;
-            border-color: #3B82F6;
-        }
-        
-        .results-count {
-            color: #64748B;
-            font-size: 0.95rem;
-        }
-        
-        /* Products Grid Section */
-        .all-products {
-            padding: 60px 0;
-            background-color: #F8FAFC;
-            min-height: 500px;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748B;
-        }
-        
-        .no-results i {
-            font-size: 4rem;
-            color: #CBD5E1;
-            margin-bottom: 20px;
-        }
-        
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            .products-page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .filter-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .filter-controls {
-                justify-content: space-between;
-            }
-            
-            .filter-select {
-                flex: 1;
-            }
-        }
-        /* ==================== DARK & ELEGANT HOVER EFFECT ==================== */
-/* Applies only to product cards on this page */
-
-.product-card {
-    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-    border: 1px solid #E2E8F0;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    z-index: 1;
-}
-
-.product-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0F172A 0%, #334155 50%, #38BDF8 100%);
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.5s ease;
-    border-radius: 16px;
-}
-
-.product-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.4);
-    border-color: transparent;
-}
-
-.product-card:hover::before {
-    opacity: 1;
-}
-
-/* Make text white on hover */
-.product-card:hover .product-name {
-    color: #FFFFFF;
-    transition: color 0.4s ease;
-}
-
-.product-card:hover .product-price {
-    color: #38BDF8;
-    transition: color 0.4s ease;
-}
-
-.product-card:hover .product-desc {
-    color: #CBD5E1;
-    transition: color 0.4s ease;
-}
-
-.product-card:hover .product-category {
-    background-color: #38BDF8;
-    color: #0F172A;
-    font-weight: 700;
-    transition: all 0.4s ease;
-}
-
-/* Button hover on dark card */
-.product-card:hover .btn-small {
-    background-color: #38BDF8;
-    color: #0F172A;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
-}
-
-.product-card:hover .btn-wa-small {
-    background-color: #25D366;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-}
-
-/* Glowing border on hover */
-.product-card::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, #0F172A, #38BDF8, #0F172A, #38BDF8);
-    border-radius: 18px;
-    z-index: -2;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.product-card:hover::after {
-    opacity: 1;
-    animation: border-glow-dark 2s linear infinite;
-}
-
-@keyframes border-glow-dark {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-}
+        .products-page-header { background: linear-gradient(135deg, #0A1929 0%, #1E3A8A 100%); padding: 60px 0; text-align: center; color: #FFFFFF; }
+        .products-page-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .products-page-header p { font-size: 1.2rem; color: #CBD5E1; }
+        .filter-bar { background-color: #FFFFFF; padding: 30px 0; border-bottom: 1px solid #E2E8F0; position: sticky; top: 80px; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .filter-container { max-width: 1300px; margin: 0 auto; padding: 0 30px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+        .search-wrapper { flex: 2; min-width: 280px; position: relative; }
+        .search-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
+        .search-input { width: 100%; padding: 14px 20px 14px 45px; border: 2px solid #E2E8F0; border-radius: 50px; font-size: 1rem; transition: all 0.3s ease; }
+        .search-input:focus { outline: none; border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+        .filter-controls { display: flex; gap: 15px; flex-wrap: wrap; }
+        .filter-select { padding: 12px 20px; border: 2px solid #E2E8F0; border-radius: 50px; font-size: 0.95rem; background-color: #FFFFFF; cursor: pointer; transition: all 0.3s ease; }
+        .filter-select:focus { outline: none; border-color: #3B82F6; }
+        .results-count { color: #64748B; font-size: 0.95rem; }
+        .all-products { padding: 60px 0; background-color: #F8FAFC; min-height: 500px; }
+        .no-results { text-align: center; padding: 60px 20px; color: #64748B; }
+        .no-results i { font-size: 4rem; color: #CBD5E1; margin-bottom: 20px; }
+        /* Dark & Elegant Hover */
+        .product-card { background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%); border: 1px solid #E2E8F0; transition: all 0.5s cubic-bezier(0.175,0.885,0.32,1.275); position: relative; z-index: 1; }
+        .product-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0F172A 0%, #334155 50%, #38BDF8 100%); opacity: 0; z-index: -1; transition: opacity 0.5s ease; border-radius: 16px; }
+        .product-card:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 30px 60px rgba(15,23,42,0.4); border-color: transparent; }
+        .product-card:hover::before { opacity: 1; }
+        .product-card:hover .product-name { color: #FFFFFF; transition: color 0.4s ease; }
+        .product-card:hover .product-price { color: #38BDF8; transition: color 0.4s ease; }
+        .product-card:hover .product-desc { color: #CBD5E1; transition: color 0.4s ease; }
+        .product-card:hover .product-category { background-color: #38BDF8; color: #0F172A; font-weight: 700; transition: all 0.4s ease; }
+        .product-card:hover .btn-small { background-color: #38BDF8; color: #0F172A; font-weight: 700; box-shadow: 0 4px 15px rgba(56,189,248,0.4); }
+        .product-card:hover .btn-wa-small { background-color: #25D366; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        .product-card::after { content: ''; position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; background: linear-gradient(45deg, #0F172A, #38BDF8, #0F172A, #38BDF8); border-radius: 18px; z-index: -2; opacity: 0; transition: opacity 0.5s ease; }
+        .product-card:hover::after { opacity: 1; animation: border-glow-dark 2s linear infinite; }
+        @keyframes border-glow-dark { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        @media screen and (max-width: 768px) { .products-page-header h1 { font-size: 2rem; } .filter-container { flex-direction: column; align-items: stretch; } .filter-controls { justify-content: space-between; } .filter-select { flex: 1; } }
     </style>
 </head>
 <body>
 
-    <!-- ==================== NAVIGATION BAR ==================== -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">JOJO</span>
-                <span class="logo-text-light">ELECTRONIC</span>
-            </div>
+            <div class="nav-logo"><span class="logo-text">JOJO</span><span class="logo-text-light">ELECTRONIC</span></div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-contact">
-                <a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> 03034143597
-                </a>
-            </div>
-            <div class="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <div class="nav-contact"><a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> 03034143597</a></div>
+            <div class="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
         </div>
     </nav>
 
-    <!-- ==================== PRODUCTS PAGE HEADER ==================== -->
     <section class="products-page-header">
-        <div class="container">
-            <h1>Our <span class="highlight">Products</span></h1>
-            <p>Browse our complete collection of premium home appliances</p>
-        </div>
+        <div class="container"><h1>Our <span class="highlight">Products</span></h1><p>Browse our complete collection of premium home appliances</p></div>
     </section>
 
-    <!-- ==================== SEARCH AND FILTER BAR ==================== -->
     <div class="filter-bar">
         <div class="filter-container">
-            <div class="search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" class="search-input" placeholder="Search for AC, Washing Machine, Fan...">
-            </div>
+            <div class="search-wrapper"><i class="fas fa-search"></i><input type="text" id="searchInput" class="search-input" placeholder="Search for AC, Washing Machine, Fan..."></div>
             <div class="filter-controls">
                 <select id="categoryFilter" class="filter-select">
                     <option value="all">All Categories</option>
@@ -293,8 +71,12 @@
                     <option value="Washing Machine">Washing Machines</option>
                     <option value="Ceiling Fan">Ceiling Fans</option>
                     <option value="Air Fryer">Air Fryers</option>
-                    <option value="LED">LED Lighting</option>
-                    <option value="Microwave">Microwave Ovens</option>
+                    <option value="LED Lighting">LED Lighting</option>
+                    <option value="Microwave Oven">Microwave Ovens</option>
+                    <option value="Home Appliance">Home Appliances</option>
+                    <option value="Kitchen Appliance">Kitchen Appliances</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Home Essentials">Home Essentials</option>
                 </select>
                 <select id="sortFilter" class="filter-select">
                     <option value="default">Sort By: Default</option>
@@ -304,290 +86,125 @@
                     <option value="name-desc">Name: Z to A</option>
                 </select>
             </div>
-            <div class="results-count">
-                <span id="resultsCount">8</span> products found
-            </div>
+            <div class="results-count"><span id="resultsCount">0</span> products found</div>
         </div>
     </div>
 
-    <!-- ==================== ALL PRODUCTS GRID ==================== -->
     <section class="all-products">
-        <div class="container">
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be dynamically loaded here via JavaScript -->
-            </div>
-        </div>
+        <div class="container"><div class="products-grid" id="productsGrid"></div></div>
     </section>
 
-    <!-- ==================== FOOTER (Coming Soon) ==================== -->
-         <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Jo Jo Electronic</h3>
-                    <p>Your trusted partner for premium home appliances in Lahore.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/923034143597"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p>
-                    <p><i class="fas fa-phone"></i> 0303-4143597</p>
-                      <p><i class="fas fa-envelope"></i>mismail4143597@gmail.com</p>
-                </div>
+                <div class="footer-section"><h3>Jo Jo Electronic</h3><p>Your trusted partner for premium home appliances in Lahore.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/923034143597" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="footer-section"><h4>Contact Info</h4><p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p><p><i class="fas fa-phone"></i> 0303-4143597</p><p><i class="fas fa-envelope"></i> mismail4143597@gmail.com</p></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p></div>
         </div>
     </footer>
 
-    <!-- Products Data -->
     <script src="js/products.js"></script>
     
-    <!-- Products Page Logic (Search, Sort, Filter - DSA Implementation) -->
     <script>
-        // ==================== DSA IMPLEMENTATION ====================
-        // Search: String Matching | Sort: Array Sorting | Filter: Array Filtering
-        
-        let currentProducts = [...products]; // Clone the products array
-        let filteredProducts = [...products];
-        
-        // DOM Elements
+        let products = [];
+        let currentProducts = [];
         const productsGrid = document.getElementById('productsGrid');
         const searchInput = document.getElementById('searchInput');
         const categoryFilter = document.getElementById('categoryFilter');
         const sortFilter = document.getElementById('sortFilter');
         const resultsCount = document.getElementById('resultsCount');
         
-        // ==================== RENDER PRODUCTS ====================
         function renderProducts(productsToRender) {
-            if (productsToRender.length === 0) {
-                productsGrid.innerHTML = `
-                    <div class="no-results" style="grid-column: 1/-1;">
-                        <i class="fas fa-search"></i>
-                        <h3>No products found</h3>
-                        <p>Try adjusting your search or filter criteria</p>
-                    </div>
-                `;
+            if (!productsToRender || productsToRender.length === 0) {
+                productsGrid.innerHTML = `<div class="no-results" style="grid-column:1/-1;"><i class="fas fa-search"></i><h3>No products found</h3><p>Try adjusting your search or filter criteria</p></div>`;
                 resultsCount.textContent = '0';
                 return;
             }
-            
             let html = '';
             productsToRender.forEach(product => {
-                html += `
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="${product.image && product.image.startsWith('http') ? product.image : 'images/' + product.image}" alt="${product.name}" onerror="this.src='images/no-image.jpg'">
-                            <span class="product-category">${product.category}</span>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-price">Rs. ${product.price.toLocaleString()}</p>
-                            <p class="product-desc">${product.description}</p>
-                            <div class="product-actions">
-                                <a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-small">View Details</a>
-                                <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Inquire
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                html += `<div class="product-card">
+                    <div class="product-image"><img src="${product.image && product.image.startsWith('http') ? product.image : 'images/' + product.image}" alt="${product.name}" onerror="this.src='images/no-image.jpg'"><span class="product-category">${product.category}</span></div>
+                    <div class="product-info"><h3 class="product-name">${product.name}</h3><p class="product-price">Rs. ${product.price.toLocaleString()}</p><p class="product-desc">${product.description}</p>
+                        <div class="product-actions"><a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-small">View Details</a><a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a></div></div></div>`;
             });
-            
             productsGrid.innerHTML = html;
             resultsCount.textContent = productsToRender.length;
         }
         
-        // ==================== SEARCH (DSA: String Matching) ====================
         function searchProducts(query) {
             if (!query) return [...currentProducts];
-            
             query = query.toLowerCase().trim();
-            
-            // DSA: Linear Search with String Matching
-            return currentProducts.filter(product => 
-                product.name.toLowerCase().includes(query) ||
-                product.category.toLowerCase().includes(query) ||
-                product.description.toLowerCase().includes(query)
+            return currentProducts.filter(p => 
+                (p.name && p.name.toLowerCase().includes(query)) ||
+                (p.category && p.category.toLowerCase().includes(query)) ||
+                (p.description && p.description.toLowerCase().includes(query))
             );
         }
         
-        // ==================== FILTER BY CATEGORY (DSA: Array Filter) ====================
-        function filterByCategory(products, category) {
-            if (category === 'all') return [...products];
-            
-            // DSA: Array Filtering
-            return products.filter(product => product.category === category);
+        function filterByCategory(productsList, category) {
+            if (category === 'all') return [...productsList];
+            return productsList.filter(p => p.category === category);
         }
         
-        // ==================== SORT (DSA: Array Sorting) ====================
-        function sortProducts(products, sortBy) {
-            const sorted = [...products];
-            
+        function sortProducts(productsList, sortBy) {
+            const sorted = [...productsList];
             switch(sortBy) {
-                case 'price-low':
-                    // DSA: Quick Sort / Merge Sort concept - Ascending Order
-                    return sorted.sort((a, b) => a.price - b.price);
-                    
-                case 'price-high':
-                    // DSA: Quick Sort / Merge Sort concept - Descending Order
-                    return sorted.sort((a, b) => b.price - a.price);
-                    
-                case 'name-asc':
-                    // DSA: String Comparison Sorting
-                    return sorted.sort((a, b) => a.name.localeCompare(b.name));
-                    
-                case 'name-desc':
-                    // DSA: String Comparison Sorting (Descending)
-                    return sorted.sort((a, b) => b.name.localeCompare(a.name));
-                    
-                default:
-                    return sorted;
+                case 'price-low': return sorted.sort((a, b) => a.price - b.price);
+                case 'price-high': return sorted.sort((a, b) => b.price - a.price);
+                case 'name-asc': return sorted.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                case 'name-desc': return sorted.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+                default: return sorted;
             }
         }
         
-        // ==================== UPDATE PRODUCTS (Main Controller) ====================
         function updateProducts() {
             const searchQuery = searchInput.value;
             const category = categoryFilter.value;
             const sortBy = sortFilter.value;
-            
-            // Step 1: Search (String Matching)
             let results = searchProducts(searchQuery);
-            
-            // Step 2: Filter by Category (Array Filter)
             results = filterByCategory(results, category);
-            
-            // Step 3: Sort (Array Sorting)
             results = sortProducts(results, sortBy);
-            
-            // Step 4: Render
             renderProducts(results);
         }
         
-        // ==================== EVENT LISTENERS ====================
         searchInput.addEventListener('input', updateProducts);
         categoryFilter.addEventListener('change', updateProducts);
         sortFilter.addEventListener('change', updateProducts);
         
-        // ==================== INITIAL RENDER ====================
-        renderProducts(products);
+        function initProducts() {
+            if (typeof products !== 'undefined' && products.length > 0) {
+                currentProducts = [...products];
+                renderProducts(products);
+            } else if (typeof loadProducts === 'function') {
+                loadProducts().then(data => {
+                    if (data && data.length > 0) {
+                        products = data;
+                        currentProducts = [...products];
+                        renderProducts(products);
+                    }
+                });
+            } else {
+                setTimeout(initProducts, 300);
+            }
+        }
         
+        window.addEventListener('DOMContentLoaded', () => { setTimeout(initProducts, 500); });
     </script>
-    <!-- Mobile Menu Toggle Script -->
-<script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-    
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-    });
-</script>
-<script>
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 150;
-        if (elementTop < windowHeight - revealPoint) {
-            element.classList.add('active');
-        }
-    });
-}
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-</script>
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 
-    <!-- Scroll to Top Script -->
     <script>
-        const scrollBtn = document.getElementById('scrollTopBtn');
-        if (scrollBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    scrollBtn.classList.add('visible');
-                } else {
-                    scrollBtn.classList.remove('visible');
-                }
-            });
-        }
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
+        if (navToggle) { navToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); navToggle.classList.toggle('active'); body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : ''; }); }
+        document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); if (navToggle) navToggle.classList.remove('active'); body.style.overflow = ''; }); });
     </script>
-    <!-- Floating WhatsApp Bubble -->
-<a href="https://wa.me/923034143597?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20a%20product." 
-   target="_blank" 
-   class="whatsapp-float"
-   title="Chat with us on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
 
-<style>
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-    z-index: 998;
-    animation: pulse-wa 2s infinite;
-    transition: all 0.3s ease;
-}
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+    <script>const scrollBtn=document.getElementById('scrollTopBtn');if(scrollBtn){window.addEventListener('scroll',()=>{if(window.scrollY>500)scrollBtn.classList.add('visible');else scrollBtn.classList.remove('visible');});}</script>
 
-.whatsapp-float:hover {
-    transform: scale(1.15);
-    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
-}
-
-@keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    50% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
-}
-
-@media screen and (max-width: 768px) {
-    .whatsapp-float {
-        bottom: 25px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
-        font-size: 1.8rem;
-    }
-}
-</style>
+    <a href="https://wa.me/923034143597" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <style>.whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;color:#FFF;border-radius:50%;font-size:2rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:998}@media screen and (max-width:768px){.whatsapp-float{bottom:25px;right:20px;width:55px;height:55px;font-size:1.8rem}}</style>
 </body>
 </html>
