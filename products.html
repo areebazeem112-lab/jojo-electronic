@@ -187,18 +187,24 @@
         categoryFilter.addEventListener('change', updateProducts);
         sortFilter.addEventListener('change', updateProducts);
         
-        async function initProducts() {
-            if (typeof loadProducts === 'function') {
-                try {
-                    const data = await loadProducts();
-                    if (data && data.length > 0) { products = data; currentProducts = [...products]; renderProducts(products); return; }
-                } catch(e) {}
+        function waitForProducts() {
+            if (typeof products !== 'undefined' && products.length > 0) {
+                currentProducts = [...products];
+                renderProducts(products);
+                return;
             }
-            if (typeof window.products !== 'undefined' && window.products.length > 0) { products = window.products; currentProducts = [...products]; renderProducts(products); }
-            else { setTimeout(initProducts, 500); }
+            if (typeof window.products !== 'undefined' && window.products.length > 0) {
+                products = window.products;
+                currentProducts = [...products];
+                renderProducts(products);
+                return;
+            }
+            setTimeout(waitForProducts, 300);
         }
         
-        window.addEventListener('DOMContentLoaded', initProducts);
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(waitForProducts, 500);
+        });
     </script>
 
     <script>
