@@ -64,38 +64,7 @@
         <div class="filter-container">
             <div class="search-wrapper"><i class="fas fa-search"></i><input type="text" id="searchInput" class="search-input" placeholder="Search for AC, Washing Machine, Fan..."></div>
             <div class="filter-controls">
-                <select id="categoryFilter" class="filter-select">
-                    <option value="all">All Categories</option>
-                    <option value="Air Conditioner">Air Conditioners</option>
-                    <option value="Washing Machine">Washing Machines</option>
-                    <option value="Water Dispenser">Water Dispensers</option>
-                    <option value="Air Circulation Fan">Air Circulation Fans</option>
-                    <option value="Air Coolers">Air Coolers</option>
-                    <option value="Microwave Oven">Microwave Ovens</option>
-                    <option value="Led Tvs">LED TVs</option>
-                    <option value="Deep Freezer">Deep Freezers</option>
-                    <option value="Refrigerator">Refrigerators</option>
-                    <option value="Iron">Irons</option>
-                    <option value="Sandwich Toaster">Sandwich Toasters</option>
-                    <option value="Ceramic Cooker">Ceramic Cookers</option>
-                    <option value="Juicer Machine">Juicer Machines</option>
-                    <option value="Kettle">Kettles</option>
-                    <option value="Chopper">Choppers</option>
-                    <option value="Fries Cutter">Fries Cutters</option>
-                    <option value="Heater">Heaters</option>
-                    <option value="Air Fryer">Air Fryers</option>
-                    <option value="Hair Straightener">Hair Straighteners</option>
-                    <option value="Hair Dryer">Hair Dryers</option>
-                    <option value="Bath Scale">Bath Scales</option>
-                    <option value="Pop-Up Toaster">Pop-Up Toasters</option>
-                    <option value="Meat Mincer">Meat Mincers</option>
-                    <option value="Hair Clipper">Hair Clippers</option>
-                    <option value="Sealing Fan">Sealing Fans</option>
-                    <option value="Wall Bracket Fan">Wall Bracket Fans</option>
-                    <option value="Pedestal Fan">Pedestal Fans</option>
-                    <option value="Bracket Fan">Bracket Fans</option>
-                    <option value="Exhaust Fan">Exhaust Fans</option>
-                </select>
+                <select id="categoryFilter" class="filter-select"><option value="all">All Categories</option></select>
                 <select id="sortFilter" class="filter-select">
                     <option value="default">Sort By: Default</option>
                     <option value="price-low">Price: Low to High</option>
@@ -123,88 +92,118 @@
         </div>
     </footer>
 
-    <script src="js/products.js"></script>
-    
     <script>
+        // ============ GOOGLE SHEETS LOADER ============
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ4pFjV8_sxEoHJwBMDCaG2piPGMGwCJp89ptezovThZeF6QuNRNYtG9vdz1b4xQXIZf4MB6caCE7U/pub?gid=0&single=true&output=csv";
         
+        let allProducts = [];
         let currentProducts = [];
-        const productsGrid = document.getElementById('productsGrid');
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const sortFilter = document.getElementById('sortFilter');
-        const resultsCount = document.getElementById('resultsCount');
+        let allCategories = new Set();
+
+        async function fetchProducts() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const text = await response.text();
+                const rows = text.split('\n');
+                
+                allProducts = [];
+                allCategories = new Set();
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const line = rows[i].trim();
+                    if (!line) continue;
+                    
+                    // Simple CSV parse
+                    const vals = [];
+                    let current = '', inQ = false;
+                    for (let c of line) {
+                        if (c === '"') { inQ = !inQ; continue; }
+                        if (c === ',' && !inQ) { vals.push(current.trim()); current = ''; continue; }
+                        current += c;
+                    }
+                    vals.push(current.trim());
+                    
+                    if (vals.length < 3 || !vals[0]) continue;
+                    
+                    allProducts.push({
+                        id: i,
+                        name: vals[0],
+                        category: vals[1] || 'Other',
+                        price: parseInt((vals[2] || '0').replace(/[^0-9]/g, '')) || 0,
+                        description: vals[3] || '',
+                        image: vals[4] || 'no-image.jpg',
+                        inStock: (vals[5] || '').toUpperCase() === 'TRUE'
+                    });
+                    
+                    if (vals[1]) allCategories.add(vals[1]);
+                }
+                
+                // Fill category dropdown
+                const catSelect = document.getElementById('categoryFilter');
+                catSelect.innerHTML = '<option value="all">All Categories</option>';
+                [...allCategories].sort().forEach(cat => {
+                    catSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+                });
+                
+                currentProducts = [...allProducts];
+                renderProducts(allProducts);
+                
+            } catch(e) {
+                document.getElementById('productsGrid').innerHTML = '<p style="text-align:center;padding:40px;">⚠️ Loading products...</p>';
+                setTimeout(fetchProducts, 2000);
+            }
+        }
         
-        function renderProducts(productsToRender) {
-            if (!productsToRender || productsToRender.length === 0) {
-                productsGrid.innerHTML = `<div class="no-results" style="grid-column:1/-1;"><i class="fas fa-search"></i><h3>No products found</h3><p>Try adjusting your search or filter criteria</p></div>`;
-                resultsCount.textContent = '0';
+        // ============ RENDER ============
+        function renderProducts(list) {
+            const grid = document.getElementById('productsGrid');
+            const count = document.getElementById('resultsCount');
+            
+            if (!list || list.length === 0) {
+                grid.innerHTML = '<div class="no-results" style="grid-column:1/-1;"><i class="fas fa-search"></i><h3>No products found</h3></div>';
+                count.textContent = '0';
                 return;
             }
+            
             let html = '';
-            productsToRender.forEach(product => {
-                const price = product.price || 0;
-                const formattedPrice = typeof price === 'number' ? price.toLocaleString() : price;
-                const imgSrc = (product.image && product.image.startsWith('http')) ? product.image : 'images/' + (product.image || 'no-image.jpg');
-                html += `<div class="product-card">
-                    <div class="product-image"><img src="${imgSrc}" alt="${product.name}" onerror="this.src='images/no-image.jpg'"><span class="product-category">${product.category}</span></div>
-                    <div class="product-info"><h3 class="product-name">${product.name}</h3><p class="product-price">Rs. ${formattedPrice}</p><p class="product-desc">${product.description}</p>
-                        <div class="product-actions"><a href="product-detail.html?id=${product.id}" class="btn btn-primary btn-small">View Details</a><a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a></div></div></div>`;
+            list.forEach(p => {
+                const img = (p.image && p.image.startsWith('http')) ? p.image : 'images/' + (p.image || 'no-image.jpg');
+                html += `<div class="product-card"><div class="product-image"><img src="${img}" alt="${p.name}" onerror="this.src='images/no-image.jpg'"><span class="product-category">${p.category}</span></div><div class="product-info"><h3 class="product-name">${p.name}</h3><p class="product-price">Rs. ${(p.price||0).toLocaleString()}</p><p class="product-desc">${p.description||''}</p><div class="product-actions"><a href="product-detail.html?id=${p.id}" class="btn btn-primary btn-small">View Details</a><a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a></div></div></div>`;
             });
-            productsGrid.innerHTML = html;
-            resultsCount.textContent = productsToRender.length;
+            grid.innerHTML = html;
+            count.textContent = list.length;
         }
         
-        function searchProducts(query) {
-            if (!query) return [...currentProducts];
-            query = query.toLowerCase().trim();
-            return currentProducts.filter(p => (p.name && p.name.toLowerCase().includes(query)) || (p.category && p.category.toLowerCase().includes(query)) || (p.description && p.description.toLowerCase().includes(query)));
+        // ============ SEARCH / FILTER / SORT ============
+        function doSearch(q) {
+            if (!q) return [...currentProducts];
+            q = q.toLowerCase();
+            return currentProducts.filter(p => (p.name||'').toLowerCase().includes(q) || (p.category||'').toLowerCase().includes(q));
+        }
+        function doFilter(list, cat) {
+            return cat === 'all' ? [...list] : list.filter(p => p.category === cat);
+        }
+        function doSort(list, sort) {
+            const s = [...list];
+            if (sort === 'price-low') return s.sort((a,b) => (a.price||0)-(b.price||0));
+            if (sort === 'price-high') return s.sort((a,b) => (b.price||0)-(a.price||0));
+            if (sort === 'name-asc') return s.sort((a,b) => (a.name||'').localeCompare(b.name||''));
+            if (sort === 'name-desc') return s.sort((a,b) => (b.name||'').localeCompare(a.name||''));
+            return s;
+        }
+        function update() {
+            let r = doSearch(document.getElementById('searchInput').value);
+            r = doFilter(r, document.getElementById('categoryFilter').value);
+            r = doSort(r, document.getElementById('sortFilter').value);
+            renderProducts(r);
         }
         
-        function filterByCategory(productsList, category) {
-            if (category === 'all') return [...productsList];
-            return productsList.filter(p => p.category === category);
-        }
+        document.getElementById('searchInput').addEventListener('input', update);
+        document.getElementById('categoryFilter').addEventListener('change', update);
+        document.getElementById('sortFilter').addEventListener('change', update);
         
-        function sortProducts(productsList, sortBy) {
-            const sorted = [...productsList];
-            switch(sortBy) {
-                case 'price-low': return sorted.sort((a, b) => (a.price || 0) - (b.price || 0));
-                case 'price-high': return sorted.sort((a, b) => (b.price || 0) - (a.price || 0));
-                case 'name-asc': return sorted.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-                case 'name-desc': return sorted.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
-                default: return sorted;
-            }
-        }
-        
-        function updateProducts() {
-            let results = searchProducts(searchInput.value);
-            results = filterByCategory(results, categoryFilter.value);
-            results = sortProducts(results, sortFilter.value);
-            renderProducts(results);
-        }
-        
-        searchInput.addEventListener('input', updateProducts);
-        categoryFilter.addEventListener('change', updateProducts);
-        sortFilter.addEventListener('change', updateProducts);
-        
-        function waitForProducts() {
-            if (typeof products !== 'undefined' && products.length > 0) {
-                currentProducts = [...products];
-                renderProducts(products);
-                return;
-            }
-            if (typeof window.products !== 'undefined' && window.products.length > 0) {
-                products = window.products;
-                currentProducts = [...products];
-                renderProducts(products);
-                return;
-            }
-            setTimeout(waitForProducts, 300);
-        }
-        
-        window.addEventListener('DOMContentLoaded', function() {
-            setTimeout(waitForProducts, 500);
-        });
+        // START
+        fetchProducts();
     </script>
 
     <script>
