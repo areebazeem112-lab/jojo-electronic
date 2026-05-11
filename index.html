@@ -2,84 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="/jojo-electronic/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jo Jo Electronic | Premium Appliances Lahore</title>
-    
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ==================== NAVIGATION BAR ==================== -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">JOJO</span>
-                <span class="logo-text-light">ELECTRONIC</span>
-            </div>
+            <div class="nav-logo"><span class="logo-text">JOJO</span><span class="logo-text-light">ELECTRONIC</span></div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-contact">
-                <a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> 03034143597
-                </a>
-            </div>
-            <div class="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <div class="nav-contact"><a href="https://wa.me/923034143597" class="nav-wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> 03034143597</a></div>
+            <div class="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
         </div>
     </nav>
-        <!-- ==================== OFFER BANNER ==================== -->
-    <!-- ==================== OFFER BANNER ==================== -->
-<div class="offer-banner" id="offerBanner">
-    <div class="offer-content">
-        <span class="offer-icon">🔥</span>
-        <span class="offer-text">
-            <strong>Special Offer!</strong> Up to 30% off on selected EcoStar appliances.
-        </span>
-        <span class="offer-countdown">
-            Offer ends in: <strong id="countdown"></strong>
-        </span>
+
+    <div class="offer-banner" id="offerBanner">
+        <div class="offer-content">
+            <span class="offer-icon">🔥</span>
+            <span class="offer-text"><strong>Special Offer!</strong> Up to 30% off on selected EcoStar appliances.</span>
+            <span class="offer-countdown">Offer ends in: <strong id="countdown"></strong></span>
+        </div>
+        <button class="offer-close" onclick="document.getElementById('offerBanner').style.display='none'" title="Close">✕</button>
     </div>
-    <button class="offer-close" onclick="document.getElementById('offerBanner').style.display='none'" title="Close">✕</button>
-</div>
-    <!-- ==================== HERO SECTION ==================== -->
+
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">
-                Welcome to <span class="highlight">JoJo Electronic</span>
-            </h1>
-           <p class="hero-subtitle">
-    <span id="typewriter"></span><span class="cursor">|</span>
-</p>
-           
-           
-            <p class="hero-description">
-                Air Conditioners • Washing Machines • Fans • Air Fryers • LEDs • Microwave Ovens
-            </p>
+            <h1 class="hero-title">Welcome to <span class="highlight">JoJo Electronic</span></h1>
+            <p class="hero-subtitle"><span id="typewriter"></span><span class="cursor">|</span></p>
+            <p class="hero-description">Air Conditioners • Washing Machines • Fans • Air Fryers • LEDs • Microwave Ovens</p>
             <div class="hero-buttons">
                 <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Browse Products</a>
                 <a href="https://wa.me/923034143597" class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
             </div>
         </div>
-                <!-- Scroll Indicator -->
-        <div class="bounce-arrow" onclick="document.getElementById('featured').scrollIntoView({behavior: 'smooth'})">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="bounce-arrow" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})"><i class="fas fa-chevron-down"></i></div>
     </section>
 
-    <!-- ==================== FEATURED PRODUCTS SECTION ==================== -->
-        <section id="featured" class="featured-products reveal">
+    <!-- ==================== FEATURED PRODUCTS ==================== -->
+    <section id="featured" class="featured-products reveal">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Our <span class="highlight">Products</span></h2>
@@ -87,16 +56,16 @@
             </div>
 
             <div class="products-grid">
-                <!-- Product Card 1: Air Conditioner -->
+                <!-- Product 1: AC - GREE Split AC 1.5 TON Pular Series (Row 1) -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/ac-1.jpg" alt="Air Conditioner">
+                        <img src="https://res.cloudinary.com/doirkhmlv/image/upload/v1778046318/fl1oxb0fmegba86lncx5.webp" alt="GREE Split AC 1.5 TON">
                         <span class="product-category">AIR CONDITIONER</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Gree Inverter AC 1.5 Ton</h3>
-                        <p class="product-price">Rs. 145,000</p>
-                        <p class="product-desc">DC Inverter • Cooling & Heating • Energy Saving</p>
+                        <h3 class="product-name">GREE Split AC 1.5 TON Pular Series</h3>
+                        <p class="product-price">Rs. 159,900</p>
+                        <p class="product-desc">Inverter • 4 Way Airflow • Self Clean • Heat & Cool</p>
                         <div class="product-actions">
                             <a href="product-detail.html?id=1" class="btn btn-primary btn-small">View Details</a>
                             <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a>
@@ -104,284 +73,103 @@
                     </div>
                 </div>
 
-                <!-- Product Card 2: Washing Machine -->
+                <!-- Product 2: LED - EcoStar 32 Inches QLED (Row 27) -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/washing-machine-1.jpg" alt="Washing Machine">
+                        <img src="https://res.cloudinary.com/doirkhmlv/image/upload/v1778221698/mdxw7bg1qun0vo3qkzrc.webp" alt="EcoStar 32 Inches QLED">
+                        <span class="product-category">LED TV</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">EcoStar 32 Inches QLED</h3>
+                        <p class="product-price">Rs. 42,900</p>
+                        <p class="product-desc">Full HD • All Options • Smart TV</p>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=27" class="btn btn-primary btn-small">View Details</a>
+                            <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Washing Machine - EcoStar Smart Touch (Row 12) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/doirkhmlv/image/upload/v1778160023/pkkxm3crfyk6ut9qludp.webp" alt="EcoStar Washing Machine Smart Touch">
                         <span class="product-category">WASHING MACHINE</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Dawlance 9100 9kg</h3>
-                        <p class="product-price">Rs. 45,000</p>
-                        <p class="product-desc">Fully Automatic • Top Load • 9kg Capacity</p>
+                        <h3 class="product-name">EcoStar Washing Machine Smart Touch</h3>
+                        <p class="product-price">Rs. 79,900</p>
+                        <p class="product-desc">Capacity 12kg • Warranty 10 Years</p>
                         <div class="product-actions">
-                            <a href="product-detail.html?id=2" class="btn btn-primary btn-small">View Details</a>
+                            <a href="product-detail.html?id=12" class="btn btn-primary btn-small">View Details</a>
                             <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product Card 3: Ceiling Fan -->
+                <!-- Product 4: Refrigerator - Waves Inverter Refrigerator (Row 35) -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/fan-1.jpg" alt="Ceiling Fan">
-                        <span class="product-category">CEILING FAN</span>
+                        <img src="https://res.cloudinary.com/doirkhmlv/image/upload/v1778293103/ibsgwu0v8ymt8w88dkl4.jpg" alt="Waves Inverter Refrigerator">
+                        <span class="product-category">REFRIGERATOR</span>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">GFC Ceiling Fan 56 Inch</h3>
-                        <p class="product-price">Rs. 5,500</p>
-                        <p class="product-desc">AeroDynamic Design • High Speed • Low Noise</p>
+                        <h3 class="product-name">Waves Inverter Refrigerator Series</h3>
+                        <p class="product-price">Rs. 99,900</p>
+                        <p class="product-desc">100% Pure Copper • Inverter Technology</p>
                         <div class="product-actions">
-                            <a href="product-detail.html?id=3" class="btn btn-primary btn-small">View Details</a>
-                            <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 4: Air Fryer -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/air-fryer-1.jpg" alt="Air Fryer">
-                        <span class="product-category">AIR FRYER</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Philips Air Fryer 4.2L</h3>
-                        <p class="product-price">Rs. 28,500</p>
-                        <p class="product-desc">Digital Display • 7 Pre-set Menus • Easy Clean</p>
-                        <div class="product-actions">
-                            <a href="product-detail.html?id=4" class="btn btn-primary btn-small">View Details</a>
+                            <a href="product-detail.html?id=35" class="btn btn-primary btn-small">View Details</a>
                             <a href="https://wa.me/923034143597" class="btn-wa-small" target="_blank"><i class="fab fa-whatsapp"></i> Inquire</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- View All Products Button -->
             <div class="view-all-wrapper">
                 <a href="products.html" class="btn btn-outline-dark">View All Products <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
-        <footer class="footer reveal">
+    <footer class="footer reveal">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Jo Jo Electronic</h3>
-                    <p>Your trusted partner for premium home appliances in Lahore.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/923034143597" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="admin.html" style="color: #4A5568; font-size: 0.8rem;">🔧 Admin</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p>
-                    <p><i class="fas fa-phone"></i> 0303-4143597</p>
-                    <p><i class="fas fa-envelope"></i> mismail4143597@gmail.com</p>
-                </div>
+                <div class="footer-section"><h3>Jo Jo Electronic</h3><p>Your trusted partner for premium home appliances in Lahore.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/923034143597" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="admin.html" style="color:#4A5568;font-size:0.8rem;">🔧 Admin</a></li></ul></div>
+                <div class="footer-section"><h4>Contact Info</h4><p><i class="fas fa-map-marker-alt"></i> Khara Chowk, Rohi Nala, Raiwind, Lahore</p><p><i class="fas fa-phone"></i> 0303-4143597</p><p><i class="fas fa-envelope"></i> mismail4143597@gmail.com</p></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Jo Jo Electronic. All rights reserved. | Designed with ❤️ for FYP</p></div>
         </div>
     </footer>
 
-    <!-- Products Data -->
-    <script src="js/products.js"></script>
-
-    <!-- Mobile Menu Toggle Script -->
     <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        const body = document.body;
-        
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-                body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-            });
-        }
-        
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                if (navToggle) navToggle.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navMenu && navToggle && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                if (navToggle) navToggle.classList.remove('active');
-                body.style.overflow = '';
-            }
-        });
+        const navToggle=document.querySelector('.nav-toggle'),navMenu=document.querySelector('.nav-menu'),body=document.body;
+        if(navToggle){navToggle.addEventListener('click',()=>{navMenu.classList.toggle('active');navToggle.classList.toggle('active');body.style.overflow=navMenu.classList.contains('active')?'hidden':'';})}
+        document.querySelectorAll('.nav-link').forEach(link=>{link.addEventListener('click',()=>{navMenu.classList.remove('active');if(navToggle)navToggle.classList.remove('active');body.style.overflow=''})});
+        document.addEventListener('click',(e)=>{if(navMenu&&navToggle&&!navMenu.contains(e.target)&&!navToggle.contains(e.target)){navMenu.classList.remove('active');if(navToggle)navToggle.classList.remove('active');body.style.overflow=''}});
     </script>
     <script>
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 150;
-        if (elementTop < windowHeight - revealPoint) {
-            element.classList.add('active');
-        }
-    });
-}
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-</script>
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scroll to Top Script -->
-    <script>
-        const scrollBtn = document.getElementById('scrollTopBtn');
-        if (scrollBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    scrollBtn.classList.add('visible');
-                } else {
-                    scrollBtn.classList.remove('visible');
-                }
-            });
-        }
+        function revealOnScroll(){document.querySelectorAll('.reveal').forEach(e=>{const t=window.innerHeight,o=e.getBoundingClientRect().top;o<t-150&&e.classList.add('active')})}
+        window.addEventListener('scroll',revealOnScroll);window.addEventListener('load',revealOnScroll);
     </script>
-    <!-- Typewriter Effect Script -->
-<script>
-    const text = "Your Trusted Partner for Premium Home Appliances in Lahore";
-    const typewriter = document.getElementById('typewriter');
-    const cursor = document.querySelector('.cursor');
-    let i = 0;
-    let isDeleting = false;
-    
-    function typeWriter() {
-        if (!isDeleting) {
-            // Typing forward
-            if (i < text.length) {
-                typewriter.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50); // Speed: 50ms per character
-            } else {
-                // Finished typing - pause then restart
-                isDeleting = true;
-                setTimeout(typeWriter, 3000); // Wait 3 seconds before deleting
-            }
-        } else {
-            // Deleting
-            if (i > 0) {
-                typewriter.textContent = text.substring(0, i - 1);
-                i--;
-                setTimeout(typeWriter, 25); // Delete faster (25ms)
-            } else {
-                // Finished deleting - start typing again
-                isDeleting = false;
-                setTimeout(typeWriter, 1000); // Wait 1 second before retyping
-            }
-        }
-    }
-    
-    // Start the typewriter effect when page loads
-    window.addEventListener('load', () => {
-        setTimeout(typeWriter, 500); // Small delay before starting
-    });
-</script>
-<!-- Floating WhatsApp Bubble -->
-<a href="https://wa.me/923034143597?text=Assalam-o-Alaikum!%20I%20want%20to%20inquire%20about%20a%20product." 
-   target="_blank" 
-   class="whatsapp-float"
-   title="Chat with us on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+    <script>const scrollBtn=document.getElementById('scrollTopBtn');if(scrollBtn){window.addEventListener('scroll',()=>{scrollBtn.classList.toggle('visible',window.scrollY>500)})}</script>
 
-<style>
-.whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-    z-index: 998;
-    animation: pulse-wa 2s infinite;
-    transition: all 0.3s ease;
-}
+    <script>
+        const text="Your Trusted Partner for Premium Home Appliances in Lahore";
+        const typewriter=document.getElementById('typewriter');
+        let i=0,isDeleting=false;
+        function typeWriter(){if(!isDeleting){if(i<text.length){typewriter.textContent+=text.charAt(i);i++;setTimeout(typeWriter,50)}else{isDeleting=true;setTimeout(typeWriter,3000)}}else{if(i>0){typewriter.textContent=text.substring(0,i-1);i--;setTimeout(typeWriter,25)}else{isDeleting=false;setTimeout(typeWriter,1000)}}}
+        window.addEventListener('load',()=>{setTimeout(typeWriter,500)});
+    </script>
 
-.whatsapp-float:hover {
-    transform: scale(1.15);
-    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
-}
+    <a href="https://wa.me/923034143597" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <style>.whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;color:#FFF;border-radius:50%;font-size:2rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:998}@media screen and (max-width:768px){.whatsapp-float{bottom:25px;right:20px;width:55px;height:55px;font-size:1.8rem}}</style>
 
-@keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    50% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
-}
-
-@media screen and (max-width: 768px) {
-    .whatsapp-float {
-        bottom: 25px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
-        font-size: 1.8rem;
-    }
-}
-</style>
-<!-- Countdown Timer Script -->
-<script>
-    // Set the countdown date (change as needed)
-    const countdownDate = new Date('May 15, 2026 23:59:59').getTime();
-    const countdownEl = document.getElementById('countdown');
-    
-    if (countdownEl) {
-        const timer = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            
-            if (distance < 0) {
-                clearInterval(timer);
-                countdownEl.innerHTML = 'Offer Expired';
-                return;
-            }
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }, 1000);
-    }
-</script>
-
+    <script>
+        const countdownDate=new Date('Dec 31, 2026 23:59:59').getTime();
+        const countdownEl=document.getElementById('countdown');
+        if(countdownEl){setInterval(()=>{const n=new Date().getTime(),d=countdownDate-n;if(d<0){countdownEl.innerHTML='Offer Expired';return}const days=Math.floor(d/(1000*60*60*24)),hours=Math.floor((d%(1000*60*60*24))/(1000*60*60)),minutes=Math.floor((d%(1000*60*60))/(1000*60)),seconds=Math.floor((d%(1000*60))/1000);countdownEl.innerHTML=`${days}d ${hours}h ${minutes}m ${seconds}s`},1000)}
+    </script>
 </body>
 </html>
