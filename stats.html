@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Stats | Jo Jo Electronic</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0A1929; color: #FFF; text-align: center; padding: 40px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        h1 { font-size: 2rem; margin-bottom: 5px; }
+        .subtitle { color: #94A3B8; margin-bottom: 30px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 800px; width: 100%; margin-bottom: 30px; }
+        .stat-card { background: linear-gradient(135deg, #1E3A8A, #3B82F6); padding: 30px 20px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .stat-card h2 { font-size: 3rem; color: #FBBF24; margin-bottom: 10px; font-weight: 800; }
+        .stat-card p { color: #CBD5E1; font-size: 1rem; font-weight: 500; }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 12px 25px; border-radius: 10px; cursor: pointer; font-size: 1rem; font-weight: 600; border: none; transition: all 0.3s; }
+        .btn-refresh { background: #25D366; color: #FFF; }
+        .btn-refresh:hover { background: #20BA5A; transform: translateY(-2px); }
+        .btn-reset { background: #DC143C; color: #FFF; }
+        .btn-reset:hover { background: #B22222; transform: translateY(-2px); }
+        .footer-note { margin-top: 30px; color: #64748B; font-size: 0.9rem; }
+        @media screen and (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } h1 { font-size: 1.5rem; } .stat-card h2 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Private Stats</h1>
+    <p class="subtitle">Jo Jo Electronic — Website Performance</p>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h2 id="visitors">0</h2>
+            <p>👥 Visitors Today</p>
+        </div>
+        <div class="stat-card">
+            <h2 id="orders">0</h2>
+            <p>📦 Orders Placed Today</p>
+        </div>
+        <div class="stat-card">
+            <h2 id="todayDate">—</h2>
+            <p>📅 Today's Date</p>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn btn-refresh" onclick="location.reload()">🔄 Refresh Stats</button>
+        <button class="btn btn-reset" onclick="resetStats()">🗑️ Reset Today's Stats</button>
+    </div>
+
+    <p class="footer-note">🔒 This page is private. Only you can see it.</p>
+
+    <script>
+        function loadStats() {
+            const today = new Date().toDateString();
+            const data = JSON.parse(localStorage.getItem('jojo-website-stats') || '{}');
+            
+            if (data.date !== today) {
+                data.date = today;
+                data.visitors = 0;
+                data.orders = 0;
+                localStorage.setItem('jojo-website-stats', JSON.stringify(data));
+            }
+            
+            document.getElementById('visitors').textContent = (data.visitors || 0).toLocaleString();
+            document.getElementById('orders').textContent = (data.orders || 0).toLocaleString();
+            document.getElementById('todayDate').textContent = today;
+        }
+        
+        function resetStats() {
+            if (confirm('⚠️ Reset today\'s stats to zero?')) {
+                const today = new Date().toDateString();
+                localStorage.setItem('jojo-website-stats', JSON.stringify({ date: today, visitors: 0, orders: 0 }));
+                location.reload();
+            }
+        }
+        
+        window.addEventListener('load', loadStats);
+    </script>
+
+</body>
+</html>

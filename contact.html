@@ -461,5 +461,15 @@ window.addEventListener('load', revealOnScroll);
     }
 }
 </style>
+<!-- Visitor Tracking -->
+<script>
+(function() {
+    const today = new Date().toDateString();
+    const data = JSON.parse(localStorage.getItem('jojo-website-stats') || '{}');
+    if (data.date !== today) { data.date = today; data.visitors = 1; data.orders = data.orders || 0; }
+    else { data.visitors = (data.visitors || 0) + 1; }
+    localStorage.setItem('jojo-website-stats', JSON.stringify(data));
+})();
+</script>
 </body>
 </html>

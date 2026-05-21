@@ -274,5 +274,25 @@
 
     <a href="https://wa.me/923034143597" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
     <style>.whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;color:#FFF;border-radius:50%;font-size:2rem;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:998}@media screen and (max-width:768px){.whatsapp-float{bottom:25px;right:20px;width:55px;height:55px;font-size:1.8rem}}</style>
+<!-- Visitor Tracking -->
+<script>
+(function() {
+    const today = new Date().toDateString();
+    const data = JSON.parse(localStorage.getItem('jojo-website-stats') || '{}');
+    if (data.date !== today) { data.date = today; data.visitors = 1; data.orders = data.orders || 0; }
+    else { data.visitors = (data.visitors || 0) + 1; }
+    localStorage.setItem('jojo-website-stats', JSON.stringify(data));
+})();
+</script>
+<!-- Order Tracking -->
+<script>
+function trackOrder() {
+    const today = new Date().toDateString();
+    const data = JSON.parse(localStorage.getItem('jojo-website-stats') || '{}');
+    if (data.date !== today) { data.date = today; data.visitors = data.visitors || 0; data.orders = 1; }
+    else { data.orders = (data.orders || 0) + 1; }
+    localStorage.setItem('jojo-website-stats', JSON.stringify(data));
+}
+</script>
 </body>
 </html>
